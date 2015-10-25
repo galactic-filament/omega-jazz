@@ -1,6 +1,6 @@
 web:
   image: ihsw/omega-jazz
-  command: ruby hello.ruby
+  command: rackup -p 4567 --host 0.0.0.0
   ports:
     - 80:4567
 test:
