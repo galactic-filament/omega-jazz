@@ -1,3 +1,8 @@
+web:
+  image: ihsw/omega-jazz
+  command: ruby hello.ruby
+  ports:
+    - 80:4567
 test:
   image: ihsw/omega-jazz
   command: bundle exec rake

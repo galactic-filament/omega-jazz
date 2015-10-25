@@ -1,3 +1,7 @@
-require_relative 'lib/arithmetic'
+require 'sinatra'
 
-puts add 2, 2
+set :bind, '0.0.0.0'
+
+get '/' do
+  'Hello, world!'
+end
