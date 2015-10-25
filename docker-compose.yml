@@ -1,0 +1,3 @@
+test:
+  image: ihsw/omega-jazz
+  command: bundle exec rake test
