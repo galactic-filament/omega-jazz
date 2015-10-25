@@ -3,3 +3,6 @@ language: ruby
 rvm:
   - 2.2.3
   - ruby-head
+
+before_script:
+  - cd ./app
