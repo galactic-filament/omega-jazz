@@ -2,7 +2,7 @@ FROM ruby
 
 EXPOSE 80
 
-ADD ./app /srv/app
+COPY ./app /srv/app
 WORKDIR /srv/app
 
 RUN bundle install
