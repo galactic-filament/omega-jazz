@@ -5,4 +5,4 @@ WORKDIR /srv/app
 
 RUN bundle install
 
-CMD ["bash"]
+CMD ["rackup", "-p", "4567", "--host", "0.0.0.0"]
