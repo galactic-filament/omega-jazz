@@ -1,11 +1,11 @@
-web:
+base:
   image: ihsw/omega-jazz
-  command: rackup -p 4567 --host 0.0.0.0
+web:
+  extends:
+    service: base
   ports:
     - 80:4567
-web-test:
-  image: ihsw/omega-jazz
-  command: rackup -p 4567 --host 0.0.0.0
 test:
-  image: ihsw/omega-jazz
+  extends:
+    service: base
   command: bundle exec rake
