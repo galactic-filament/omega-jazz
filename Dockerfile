@@ -1,5 +1,7 @@
 FROM ruby
 
+EXPOSE 80
+
 ADD ./app /srv/app
 WORKDIR /srv/app
 

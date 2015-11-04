@@ -3,6 +3,9 @@ web:
   command: rackup -p 4567 --host 0.0.0.0
   ports:
     - 80:4567
+web-test:
+  image: ihsw/omega-jazz
+  command: rackup -p 4567 --host 0.0.0.0
 test:
   image: ihsw/omega-jazz
   command: bundle exec rake
