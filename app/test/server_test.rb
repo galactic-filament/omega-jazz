@@ -14,4 +14,10 @@ class ServerTest < MiniTest::Test
     assert last_response.ok?
     assert_equal 'Hello, world!', last_response.body
   end
+
+  def test_ping
+    get '/ping'
+    assert last_response.ok?
+    assert_equal 'Pong', last_response.body
+  end
 end
