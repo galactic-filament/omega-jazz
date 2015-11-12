@@ -1,10 +1,13 @@
 base:
   image: ihsw/omega-jazz
+web-test:
+  extends:
+    service: base
 web:
   extends:
     service: base
   ports:
-    - 80:4567
+    - 80:80
 test:
   extends:
     service: base
