@@ -23,7 +23,12 @@ class ServerTest < MiniTest::Test
   end
 
   def test_reflection
-    post '/reflection', { greeting: 'Hello, world!' }.to_json
+    body = { greeting: 'Hello, world!' }
+
+    post '/reflection', body.to_json
     assert last_response.ok?
+
+    response_body = JSON.parse last_response.body
+    assert_equal body[:greeting], response_body['greeting']
   end
 end
