@@ -11,8 +11,9 @@ class Server < Sinatra::Base
   end
 
   post '/reflection' do
-    payload = request.body.read
-    body = JSON.parse payload
+    content_type :json
+
+    body = JSON.parse request.body.read
     body.to_json
   end
 end
