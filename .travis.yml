@@ -3,6 +3,8 @@ language: ruby
 rvm:
   - 2.2.3
   - ruby-head
+services:
+  - postgresql
 
 env:
   - ENV=travis
