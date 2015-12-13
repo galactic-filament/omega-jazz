@@ -4,5 +4,9 @@ rvm:
   - 2.2.3
   - ruby-head
 
+env:
+  - ENV=travis
 before_install:
   - cd ./app
+before_script:
+  - psql -f ./db/container-files/docker-entrypoint-initdb.d/db.sql -U postgres

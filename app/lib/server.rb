@@ -2,7 +2,11 @@ require 'sinatra/base'
 require 'json'
 require 'active_record'
 
-ActiveRecord::Base.establish_connection('postgres://postgres@db/postgres')
+host = 'db'
+if ENV['ENV'] == 'travis'
+  host = 'localhost'
+end
+ActiveRecord::Base.establish_connection("postgres://postgres@#{host}/postgres")
 
 class Post < ActiveRecord::Base
 end
