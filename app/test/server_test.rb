@@ -10,6 +10,16 @@ class ServerTest < MiniTest::Test
     Server
   end
 
+  def _test_json (url, body)
+    post url, body
+
+    status = last_response.status
+    error = last_response.errors.split("\n").first
+    assert last_response.ok?, "Message was not 200 OK: #{status}\n#{error}"
+
+    JSON.parse last_response.body
+  end
+
   def test_hello_world
     get '/'
     assert last_response.ok?
@@ -25,10 +35,14 @@ class ServerTest < MiniTest::Test
   def test_reflection
     body = { greeting: 'Hello, world!' }
 
-    post '/reflection', body.to_json
-    assert last_response.ok?
-
-    response_body = JSON.parse last_response.body
+    response_body = _test_json '/reflection', body.to_json
     assert_equal body[:greeting], response_body['greeting']
+  end
+
+  def test_posts
+    body = { body: 'Hello, world!' }
+
+    response_body = _test_json '/posts', body.to_json
+    assert response_body['id'].is_a? Numeric
   end
 end
