@@ -6,7 +6,7 @@ base:
 test-base:
   extends:
     service: base
-  command: bundle exec rake
+  command: ./bin/run-tests
 
 web-test:
   extends:
