@@ -3,6 +3,8 @@ db:
 
 base:
   image: ihsw/omega-jazz
+  environment:
+    - ENV=local
 test-base:
   extends:
     service: base
