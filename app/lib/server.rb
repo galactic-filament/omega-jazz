@@ -31,7 +31,11 @@ class Server < Sinatra::Base
     content_type :json
 
     request_body = JSON.parse request.body.read
-    post = Post.create(body: request_body[:body])
-    { id: post.id }.to_json
+    post = Post.create(body: request_body['body'])
+    post.to_json
+  end
+
+  get '/post/:id' do
+    Post.find(params['id']).to_json
   end
 end

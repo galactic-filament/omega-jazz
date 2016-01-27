@@ -20,6 +20,12 @@ class ServerTest < MiniTest::Test
     JSON.parse last_response.body
   end
 
+  def _create_post(body, cb)
+    response_body = _test_json '/posts', body.to_json
+    assert response_body['id'].is_a? Numeric
+    cb.call response_body
+  end
+
   def test_hello_world
     get '/'
     assert last_response.ok?
@@ -39,10 +45,22 @@ class ServerTest < MiniTest::Test
     assert_equal body[:greeting], response_body['greeting']
   end
 
-  def test_posts
+  def test_post_create
     body = { body: 'Hello, world!' }
+    _create_post body, proc { |response_body| }
+  end
 
-    response_body = _test_json '/posts', body.to_json
-    assert response_body['id'].is_a? Numeric
+  def test_post_get
+    body = { body: 'Hello, world!' }
+    _create_post body, proc { |create_response_body|
+      id = create_response_body['id']
+      get "/post/#{id}"
+
+      assert last_response.ok?
+
+      get_response_body = JSON.parse last_response.body
+
+      assert_equal create_response_body['body'], get_response_body['body']
+    }
   end
 end
