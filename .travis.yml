@@ -3,6 +3,9 @@ language: ruby
 rvm:
   - 2.3.0
   - ruby-head
+matrix:
+  allow_failures:
+    - rvm: ruby-head
 services:
   - postgresql
 
