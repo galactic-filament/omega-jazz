@@ -38,4 +38,8 @@ class Server < Sinatra::Base
   get '/post/:id' do
     Post.find(params['id']).to_json
   end
+
+  delete '/post/:id' do
+    Post.destroy(params['id'])
+  end
 end
