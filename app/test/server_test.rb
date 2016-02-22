@@ -1,29 +1,15 @@
-require_relative './test_helper'
-require_relative '../lib/server'
+require 'minitest/autorun'
 require 'rack/test'
 require 'json'
+require_relative '../lib/server'
+require_relative './test_helper'
 
 class ServerTest < MiniTest::Test
   include Rack::Test::Methods
+  include TestHelper::Methods
 
   def app
     Server
-  end
-
-  def _test_json (url, body)
-    post url, body
-
-    status = last_response.status
-    error = last_response.errors.split("\n").first
-    assert last_response.ok?, "Message was not 200 OK: #{status}\n#{error}"
-
-    JSON.parse last_response.body
-  end
-
-  def _create_post(body)
-    response_body = _test_json '/posts', body.to_json
-    assert response_body['id'].is_a? Numeric
-    response_body
   end
 
   def test_hello_world
@@ -41,7 +27,7 @@ class ServerTest < MiniTest::Test
   def test_reflection
     body = { greeting: 'Hello, world!' }
 
-    response_body = _test_json '/reflection', body.to_json
+    response_body = _test_post_json '/reflection', body.to_json
     assert_equal body[:greeting], response_body['greeting']
   end
 
