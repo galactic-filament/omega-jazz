@@ -27,7 +27,7 @@ class ServerTest < MiniTest::Test
   def test_reflection
     body = { greeting: 'Hello, world!' }
 
-    response_body = _test_post_json '/reflection', body.to_json
+    response_body = _test_post_json '/reflection', body
     assert_equal body[:greeting], response_body['greeting']
   end
 
@@ -68,6 +68,6 @@ class ServerTest < MiniTest::Test
     id = create_response_body['id']
     url = "/post/#{id}"
     put_body = { body: 'Jello, world!' }
-    _test_put_json url, put_body.to_json
+    _test_put_json url, put_body
   end
 end
