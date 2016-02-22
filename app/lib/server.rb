@@ -10,9 +10,6 @@ if ENV['ENV'] == 'travis'
 end
 ActiveRecord::Base.establish_connection("postgres://postgres@#{host}/postgres")
 
-class Post < ActiveRecord::Base
-end
-
 class Server < Sinatra::Base
   use DefaultRoutes
   use PostsRoutes
