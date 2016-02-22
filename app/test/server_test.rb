@@ -43,11 +43,7 @@ class ServerTest < MiniTest::Test
 
     # fetching it
     id = create_response_body['id']
-    get "/post/#{id}"
-
-    assert last_response.ok?
-
-    get_response_body = JSON.parse last_response.body
+    get_response_body = _test_get_json "/post/#{id}"
     assert_equal create_response_body['body'], get_response_body['body']
   end
 
@@ -72,8 +68,6 @@ class ServerTest < MiniTest::Test
     id = create_response_body['id']
     url = "/post/#{id}"
     put_body = { body: 'Jello, world!' }
-    put url, put_body
-
-    assert last_response.ok?, "PUT #{url} was not 200: #{last_response.status}"
+    _test_put_json url, put_body
   end
 end

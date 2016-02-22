@@ -8,6 +8,11 @@ module TestHelper
       JSON.parse last_response.body
     end
 
+    def _test_get_json (url)
+      get url
+      _test_json
+    end
+
     def _test_post_json (url, body)
       post url, body
       _test_json
