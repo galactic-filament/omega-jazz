@@ -68,6 +68,6 @@ class ServerTest < MiniTest::Test
     id = create_response_body['id']
     url = "/post/#{id}"
     put_body = { body: 'Jello, world!' }
-    _test_put_json url, put_body
+    _test_put_json url, put_body.to_json
   end
 end
