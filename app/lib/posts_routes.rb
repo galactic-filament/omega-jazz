@@ -21,4 +21,11 @@ class PostsRoutes < Sinatra::Base
   delete '/post/:id' do
     Post.destroy(params['id'])
   end
+
+  put '/post/:id' do
+    request_body = JSON.parse request.body.read
+    post = Post.find(params['id'])
+    post.update(body: request_body['body'])
+    post.to_json
+  end
 end

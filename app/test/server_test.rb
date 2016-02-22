@@ -62,4 +62,18 @@ class ServerTest < MiniTest::Test
 
     assert last_response.ok?
   end
+
+  def test_post_put
+    # creating the post
+    create_body = { body: 'Hello, world!' }
+    create_response_body = _create_post create_body
+
+    # updating it
+    id = create_response_body['id']
+    url = "/post/#{id}"
+    put_body = { body: 'Jello, world!' }
+    put url, put_body
+
+    assert last_response.ok?, "PUT #{url} was not 200: #{last_response.status}"
+  end
 end
