@@ -3,10 +3,14 @@ require 'json'
 
 class DefaultRoutes < Sinatra::Base
   get '/' do
+    content_type 'text/plain'
+
     'Hello, world!'
   end
 
   get '/ping' do
+    content_type 'text/plain'
+
     'Pong'
   end
 
