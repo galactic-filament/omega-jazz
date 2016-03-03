@@ -8,6 +8,7 @@ end
 class PostsRoutes < Sinatra::Base
   post '/posts' do
     content_type :json
+    status 201
 
     request_body = JSON.parse request.body.read
     post = Post.create(body: request_body['body'])
