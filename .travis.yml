@@ -10,7 +10,7 @@ services:
   - postgresql
 
 env:
-  - ENV=travis
+  - DATBASE_HOST=localhost
 before_install:
   - psql -f ./db/container-files/docker-entrypoint-initdb.d/db.sql -U postgres
   - cd ./app

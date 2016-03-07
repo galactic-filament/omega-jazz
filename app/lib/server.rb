@@ -1,14 +1,10 @@
 require 'sinatra/base'
-require 'json'
 require 'active_record'
 require_relative './default_routes'
 require_relative './posts_routes'
 
-host = 'db'
-if ENV['ENV'] == 'travis'
-  host = 'localhost'
-end
-ActiveRecord::Base.establish_connection("postgres://postgres@#{host}/postgres")
+db_host = ENV['DATABASE_HOST']
+ActiveRecord::Base.establish_connection("postgres://postgres@#{db_host}/postgres")
 
 class Server < Sinatra::Base
   use DefaultRoutes
