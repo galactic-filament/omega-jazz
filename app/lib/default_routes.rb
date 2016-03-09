@@ -17,7 +17,6 @@ class DefaultRoutes < Sinatra::Base
   post '/reflection' do
     content_type :json
 
-    request_body = JSON.parse request.body.read
-    request_body.to_json
+    JSON.parse(request.body.read).to_json
   end
 end
