@@ -5,6 +5,6 @@ EXPOSE 80
 COPY ./app /srv/app
 WORKDIR /srv/app
 
-# RUN bundle install
+RUN bundle install
 
-CMD ["rackup", "-p", "80", "--host", "0.0.0.0"]
+CMD ["./bin/run-app"]
