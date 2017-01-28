@@ -1,4 +1,4 @@
 #!/bin/bash
 
 ruby ./bin/validate-environment.rb \
-  && bundle exec rake
+  && rackup -p $APP_PORT --host 0.0.0.0
