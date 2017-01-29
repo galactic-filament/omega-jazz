@@ -8,7 +8,7 @@ env_var_names = [
 ]
 env_var_values = env_var_names.map { |name| ENV[name] }
 env_vars = Hash[env_var_names.zip(env_var_values)]
-missing_env_vars = env_vars.reject { |key, value| value != nil || value.length > 0 }
+missing_env_vars = env_vars.reject { |key, value| value == nil || value.length == 0 }
 if missing_env_vars.length > 0
   missing_env_vars.each do |name, value|
     puts "#{name} was missing"
