@@ -6,7 +6,7 @@ env_var_names = [
   'APP_LOG_DIR',
   'DATABASE_HOST'
 ]
-env_vars = Hash[env_var_names.zip(env_var_names.map({ |name| ENV[name] }))]
+env_vars = Hash[env_var_names.zip(env_var_names.map { |name| ENV[name] })]
 missing_env_vars = env_vars.select { |key, value| value == nil || value.length == 0 }
 if missing_env_vars.length > 0
   missing_env_vars.each do |name, value|
