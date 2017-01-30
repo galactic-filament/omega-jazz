@@ -31,4 +31,10 @@ rescue Errno::ECONNREFUSED
   exit 1
 end
 
+# validating that the log dir exists
+if File.exists?(env_vars['APP_LOG_DIR']) == false
+  puts "#{env_vars['APP_LOG_DIR']} log dir does not exist"
+  exit 1
+end
+
 exit 0
