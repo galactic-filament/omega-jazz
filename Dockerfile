@@ -14,7 +14,7 @@ ENV APP_LOG_DIR $APP_DIR/log
 VOLUME $APP_LOG_DIR
 RUN mkdir $APP_LOG_DIR
 
-# build app
+# install deps
 RUN bundle install
 
 CMD ["./bin/run-app"]
