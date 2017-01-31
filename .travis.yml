@@ -21,6 +21,8 @@ env:
 before_install:
 - psql -f ./db/container-files/docker-entrypoint-initdb.d/db.sql -U postgres
 - cd ./app
+before_script:
+- mkdir ./log
+script: ./bin/run-tests
 after_success:
 - test $TRAVIS_RUBY_VERSION == "2.3.0" && ../bin/docker-push ihsw/omega-jazz
-script: ./bin/run-tests
