@@ -22,3 +22,4 @@ before_install:
 - cd ./app
 after_success:
 - test $TRAVIS_RUBY_VERSION == "2.3.0" && ../bin/docker-push ihsw/omega-jazz
+script: ./bin/run-tests
