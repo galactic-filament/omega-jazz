@@ -16,13 +16,6 @@ class Server < Sinatra::Base
     use ::Rack::CommonLogger, access_logger
   end
 
-  # error logging
-  error_log = ::File.new(::File.join(ENV['APP_LOG_DIR'], 'error.log'), "a+")
-  error_log.sync = true
-  before {
-    env["rack.errors"] = error_log
-  }
-
   use DefaultRoutes
   use PostsRoutes
 end
