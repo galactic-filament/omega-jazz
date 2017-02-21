@@ -1,8 +1,7 @@
 sudo: required
 language: ruby
 rvm:
-- 2.3.0
-- 2.4.0
+- 2.4
 - ruby-head
 matrix:
   allow_failures:
@@ -26,4 +25,4 @@ before_script:
 - mkdir ./log
 script: ./bin/run-tests
 after_success:
-- test $TRAVIS_RUBY_VERSION == "2.4.0" && git clean -xfd && ../bin/docker-push ihsw/omega-jazz
+- test $TRAVIS_RUBY_VERSION == "2.4" && git clean -xfd && ../bin/docker-push ihsw/omega-jazz
