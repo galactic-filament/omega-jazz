@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require 'active_record'
-require_relative './default_routes'
-require_relative './posts_routes'
+require File.expand_path '../default_routes', __FILE__
+require File.expand_path '../posts_routes', __FILE__
 require 'logger'
 
 db_host = ENV['DATABASE_HOST']
