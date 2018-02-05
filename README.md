@@ -11,7 +11,7 @@ Web Framework | [Sinatra](http://sinatrarb.com/)
 SQL ORM | [ActiveRecord](www.rubydoc.info/gems/activerecord)
 Logging | stdlib
 Test Framework | [Minitest](http://docs.seattlerb.org/minitest/)
-Test Coverage | NYI
+Test Coverage | [Simplecov](https://github.com/colszowka/simplecov)
 
 ## Features Implemented
 
@@ -20,9 +20,9 @@ Test Coverage | NYI
 - [x] Database access
 - [x] Request logging to /srv/app/log/app.log
 - [x] Unit tests
-- [ ] Unit test coverage reporting
+- [x] Unit test coverage reporting
 - [x] Automated testing using TravisCI
-- [ ] Automated coverage reporting using Coveralls
+- [x] Automated coverage reporting using Coveralls
 - [ ] CRUD routes for user management
 - [ ] Password encryption using bcrypt
 - [ ] Routes protected via HTTP authentication
