@@ -1,6 +1,7 @@
 # omega-jazz
 
 [![Build Status](https://travis-ci.org/galactic-filament/omega-jazz.svg?branch=master)](https://travis-ci.org/galactic-filament/omega-jazz)
+[![Coverage Status](https://coveralls.io/repos/github/galactic-filament/omega-jazz/badge.svg?branch=master)](https://coveralls.io/github/galactic-filament/omega-jazz?branch=master)
 
 ## Libraries
 
