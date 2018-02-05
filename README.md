@@ -6,11 +6,11 @@
 
 Kind | Name
 --- | ---
-Web Framework | [Express](https://expressjs.com/)
-SQL ORM | [Sequelize](http://docs.sequelizejs.com/)
-Logging | [Winston](https://www.npmjs.com/package/winston)
-Test Framework | [Mocha](https://mochajs.org/)
-Test Coverage | [Istanbul](https://istanbul.js.org/)
+Web Framework | [Sinatra](http://sinatrarb.com/)
+SQL ORM | [ActiveRecord](www.rubydoc.info/gems/activerecord)
+Logging | stdlib
+Test Framework | [Minitest](http://docs.seattlerb.org/minitest/)
+Test Coverage | NYI
 
 ## Features Implemented
 
