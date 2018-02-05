@@ -1,4 +1,0 @@
-#! /bin/bash
-
-docker build -t ihsw/omega-jazz . \
-  && docker build -t ihsw/omega-jazz-db ./db
