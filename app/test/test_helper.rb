@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 module TestHelper
   module Methods
     def _test_json(status=200)

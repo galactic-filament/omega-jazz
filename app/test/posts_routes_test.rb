@@ -1,8 +1,8 @@
+require File.expand_path '../test_helper', __FILE__
 require 'minitest/autorun'
 require 'rack/test'
 require 'json'
 require File.expand_path '../../lib/server', __FILE__
-require File.expand_path '../test_helper', __FILE__
 
 class PostRoutesTest < MiniTest::Test
   include Rack::Test::Methods
