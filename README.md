@@ -26,3 +26,4 @@ Test Coverage | [Istanbul](https://istanbul.js.org/)
 - [ ] Password encryption using bcrypt
 - [ ] Routes protected via HTTP authentication
 - [ ] Routes protected via ACLs
+- [ ] Validates environment (env vars, database host and port are accessible)
