@@ -27,4 +27,5 @@ Test Coverage | [Simplecov](https://github.com/colszowka/simplecov)
 - [ ] Password encryption using bcrypt
 - [ ] Routes protected via HTTP authentication
 - [ ] Routes protected via ACLs
+- [ ] [Start GraphQL endpoint](https://medium.com/@awin/graphql-server-with-sinatra-ruby-part-1-fdd664170715)
 - [x] Validates environment (env vars, database host and port are accessible)
