@@ -1,7 +1,7 @@
-require 'sinatra/base'
 require 'json'
+require File.expand_path '../base', __FILE__
 
-class DefaultRoutes < Sinatra::Base
+class DefaultRoutes < Base
   get '/' do
     content_type 'text/plain'
 

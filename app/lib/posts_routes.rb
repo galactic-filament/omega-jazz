@@ -1,12 +1,12 @@
-require 'sinatra/base'
 require 'json'
 require 'active_record'
+require File.expand_path '../base', __FILE__
 
 class Post < ActiveRecord::Base
   validates :body, presence: true
 end
 
-class PostsRoutes < Sinatra::Base
+class PostsRoutes < Base
   post '/posts' do
     content_type :json
     status 400
