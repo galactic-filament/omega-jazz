@@ -9,15 +9,12 @@ end
 class PostsRoutes < Sinatra::Base
   post '/posts' do
     content_type :json
+    status 400
+
+    post = Post.create(body: JSON.parse(request.body.read)['body'])
+    return if post.valid? == false
+
     status 201
-
-    request_body = JSON.parse request.body.read
-    post = Post.create(body: request_body['body'])
-    if post.valid? == false
-      status 400
-      return
-    end
-
     post.to_json
   end
 
@@ -36,9 +33,8 @@ class PostsRoutes < Sinatra::Base
   put '/post/:id' do
     content_type :json
 
-    request_body = JSON.parse request.body.read
-    post = Post.find(params['id'])
-    post.update(body: request_body['body'])
+    post = Post.find params['id']
+    post.update body: JSON.parse(request.body.read)['body']
     post.to_json
   end
 end
