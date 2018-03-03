@@ -14,7 +14,17 @@ class PostRoutesTest < MiniTest::Test
 
   def test_post_create
     body = { body: 'Hello, world!' }
-    _create_post body
+    post '/posts', body.to_json
+    assert_equal last_response.status, 201
+
+    response_body = JSON.parse last_response.body
+    assert response_body['id'].is_a? Numeric
+  end
+
+  def test_post_create_erroneous
+    body = {}
+    post '/posts', body.to_json
+    assert_equal last_response.status, 400
   end
 
   def test_post_get

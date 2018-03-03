@@ -3,6 +3,7 @@ require 'json'
 require 'active_record'
 
 class Post < ActiveRecord::Base
+  validates :body, presence: true
 end
 
 class PostsRoutes < Sinatra::Base
@@ -12,6 +13,11 @@ class PostsRoutes < Sinatra::Base
 
     request_body = JSON.parse request.body.read
     post = Post.create(body: request_body['body'])
+    if post.valid? == false
+      status 400
+      return
+    end
+
     post.to_json
   end
 

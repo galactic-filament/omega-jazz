@@ -26,8 +26,10 @@ class DefaultRoutesTest < MiniTest::Test
 
   def test_reflection
     body = { greeting: 'Hello, world!' }
+    post '/reflection', body.to_json
+    assert last_response.status == 200
 
-    response_body = _test_post_json '/reflection', body
+    response_body = JSON.parse last_response.body
     assert_equal body[:greeting], response_body['greeting']
   end
 end
