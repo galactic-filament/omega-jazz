@@ -28,7 +28,7 @@ class PostRoutesTest < MiniTest::Test
   end
 
   def test_post_get
-    create_response_body = _create_post({body: 'Hello, world!'})
+    create_response_body = _create_post :body => 'Hello, world!'
 
     get "/post/#{create_response_body['id']}"
 
@@ -39,7 +39,7 @@ class PostRoutesTest < MiniTest::Test
   end
 
   def test_post_delete
-    create_response_body = _create_post({body: 'Hello, world!'})
+    create_response_body = _create_post :body => 'Hello, world!'
 
     delete "/post/#{create_response_body['id']}"
 
@@ -47,7 +47,7 @@ class PostRoutesTest < MiniTest::Test
   end
 
   def test_post_put
-    create_response_body = _create_post({body: 'Hello, world!'})
+    create_response_body = _create_post :body => 'Hello, world!'
 
     put_request_body = {body: 'Jello, world!'}
     put "/post/#{create_response_body['id']}", put_request_body.to_json
