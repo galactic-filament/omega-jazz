@@ -13,6 +13,13 @@ class Base < Sinatra::Base
   disable :show_exceptions
   set :show_exceptions, false
   error do
-    {message: env['sinatra.error'].message}.to_json
+    status 500
+    e = env['sinatra.error']
+    {
+      url: request.url,
+      ip: request.ip,
+      backtrace: e.backtrace.join("\n"),
+      message: e.message
+    }.to_json
   end
 end
