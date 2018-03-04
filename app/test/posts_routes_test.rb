@@ -55,6 +55,6 @@ class PostRoutesTest < MiniTest::Test
     assert last_response.ok?
 
     put_response_body = JSON.parse last_response.body
-    assert_equal put_response_body['body'], put_response_body['body']
+    assert_equal put_request_body[:body], put_response_body['body']
   end
 end
