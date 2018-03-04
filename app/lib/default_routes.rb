@@ -19,4 +19,8 @@ class DefaultRoutes < Base
 
     JSON.parse(request.body.read).to_json
   end
+
+  get '/error' do
+    raise 'Test'
+  end
 end

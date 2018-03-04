@@ -32,4 +32,10 @@ class DefaultRoutesTest < MiniTest::Test
     response_body = JSON.parse last_response.body
     assert_equal body[:greeting], response_body['greeting']
   end
+
+  def test_error
+    get '/error'
+    assert_equal 500, last_response.status
+    assert_equal({'message': 'Test'}.to_json, last_response.body)
+  end
 end
