@@ -52,4 +52,9 @@ class UsersRoutes < Base
     status 401
     {'authenticated': false, 'reason': env['warden.options'][:message]}.to_json
   end
+
+  get '/user' do
+    env['warden'].authenticate!
+    env['warden'].user.to_json only: [:id, :email]
+  end
 end

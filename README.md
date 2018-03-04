@@ -25,7 +25,7 @@ Test Coverage | [Simplecov](https://github.com/colszowka/simplecov)
 - [x] Automated coverage reporting using Coveralls
 - [x] CRUD routes for user management
 - [x] Password encryption using bcrypt
-- [ ] Routes protected by cookie session
+- [x] Routes protected by cookie session
 - [ ] Routes protected via HTTP authentication
 - [ ] Routes protected via ACLs
 - [ ] [Start GraphQL endpoint](https://medium.com/@awin/graphql-server-with-sinatra-ruby-part-1-fdd664170715)

@@ -58,7 +58,7 @@ class UserRoutesTest < MiniTest::Test
     create_response_body = _create_user email: 'a+login@a.a', password: 'test'
 
     login_request_body = {email: 'a+login@a.a', password: 'test'}
-    post "/login", login_request_body
+    post '/login', login_request_body
 
     assert_equal 200, last_response.status
 
@@ -67,7 +67,7 @@ class UserRoutesTest < MiniTest::Test
 
   def test_user_invalid_login_email
     login_request_body = {email: 'a+invalid-login@a.a', password: 'test'}
-    post "/login", login_request_body
+    post '/login', login_request_body
 
     assert_equal 401, last_response.status
 
@@ -78,10 +78,33 @@ class UserRoutesTest < MiniTest::Test
     create_response_body = _create_user email: 'a+login-invalid-password@a.a', password: 'test'
 
     login_request_body = {email: 'a+login-invalid-password@a.a', password: 'test2'}
-    post "/login", login_request_body
+    post '/login', login_request_body
 
     assert_equal 401, last_response.status
 
     assert_equal({'authenticated': false, 'reason': 'Invalid password'}.to_json, last_response.body)
+  end
+
+  def test_user_data
+    create_response_body = _create_user email: 'a+user-data@a.a', password: 'test'
+
+    login_request_body = {email: 'a+user-data@a.a', password: 'test'}
+    post '/login', login_request_body
+
+    assert_equal 200, last_response.status
+
+    get '/user'
+    assert_equal 200, last_response.status
+
+    user_response_body = JSON.parse last_response.body
+    assert_equal 'a+user-data@a.a', user_response_body['email']
+  end
+
+  def test_user_data
+    get '/user'
+    assert_equal 401, last_response.status
+
+    user_response_body = JSON.parse last_response.body
+    assert_equal({'authenticated': false, 'reason': nil}.to_json, last_response.body)
   end
 end
