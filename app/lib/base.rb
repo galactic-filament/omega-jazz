@@ -5,13 +5,16 @@ class Base < Sinatra::Base
 
   # access logging
   access_logger = ::Logger.new(::File.join(ENV['APP_LOG_DIR'], 'app.log'))
+
+  # configuration
   configure do
     use ::Rack::CommonLogger, access_logger
+    set :show_exceptions, false
+    set :dump_errors, false
+    set :raise_errors, false
   end
 
   # error handling
-  disable :show_exceptions
-  set :show_exceptions, false
   error do
     status 500
     e = env['sinatra.error']
