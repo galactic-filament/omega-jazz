@@ -10,6 +10,7 @@ class Base < Sinatra::Base
   end
 
   # error handling
+  disable :show_exceptions
   set :show_exceptions, false
   error do
     {message: env['sinatra.error'].message}.to_json
