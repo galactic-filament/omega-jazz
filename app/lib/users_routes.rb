@@ -1,30 +1,9 @@
 require 'json'
-require 'active_record'
-require 'bcrypt'
+require 'warden'
 require File.expand_path '../base', __FILE__
-
-class User < ActiveRecord::Base
-  include BCrypt
-
-  validates :email, presence: true
-  validates :hashed_password, presence: true
-
-  def password
-    @password ||= Password.new(self.hashed_password)
-  end
-
-  def password=(new_password)
-    @password = Password.create(new_password)
-    self.hashed_password = @password
-  end
-end
+require File.expand_path '../models/user', __FILE__
 
 class UsersRoutes < Base
-  set :show_exceptions, false
-  error do
-    {message: env['sinatra.error'].message}.to_json
-  end
-
   post '/users' do
     content_type :json
     status 400

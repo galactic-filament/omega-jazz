@@ -1,10 +1,6 @@
 require 'json'
-require 'active_record'
 require File.expand_path '../base', __FILE__
-
-class Post < ActiveRecord::Base
-  validates :body, presence: true
-end
+require File.expand_path '../models/post', __FILE__
 
 class PostsRoutes < Base
   post '/posts' do

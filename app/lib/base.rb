@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'logger'
 
 class Base < Sinatra::Base
   ::Logger.class_eval { alias :write :'<<' }
