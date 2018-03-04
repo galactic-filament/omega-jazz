@@ -29,7 +29,7 @@ class Server < Base
 
   use Warden::Manager do |config|
     config.serialize_into_session{|user| user.id}
-    config.serialize_from_session{|id| User.get(id)}
+    config.serialize_from_session{|id| User.find(id)}
     config.scope_defaults :default, {
       strategies: [:password],
       action: '/unauthenticated'
