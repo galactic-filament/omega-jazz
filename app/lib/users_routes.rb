@@ -48,6 +48,18 @@ class UsersRoutes < Base
     {'authenticated': true}.to_json
   end
 
+  get '/logout' do
+    if env['warden'].user == nil
+      status 403
+
+      return {}.to_json
+    end
+
+    env['warden'].raw_session.inspect
+    env['warden'].logout
+    {}.to_json
+  end
+
   post '/unauthenticated' do
     status 401
     {'authenticated': false, 'reason': env['warden.options'][:message]}.to_json
