@@ -22,7 +22,9 @@ class Base < Sinatra::Base
 
   # error handling
   error do
+    content_type :json
     status 500
+
     e = env['sinatra.error']
     {
       url: request.url,
