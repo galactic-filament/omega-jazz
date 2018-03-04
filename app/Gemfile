@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'activerecord'
 gem 'pg', '~> 0.20'
 gem 'bcrypt'
+gem 'warden'
 
 group :test do
   gem 'rake'

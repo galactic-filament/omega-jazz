@@ -42,4 +42,14 @@ class UsersRoutes < Base
     user.save!
     user.to_json only: [:id, :email]
   end
+
+  post '/login' do
+    env['warden'].authenticate!
+    {'authenticated': true}.to_json
+  end
+
+  post '/unauthenticated' do
+    status 401
+    {'authenticated': false, 'reason': env['warden.options'][:message]}.to_json
+  end
 end

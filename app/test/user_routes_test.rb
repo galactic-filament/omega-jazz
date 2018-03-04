@@ -13,7 +13,7 @@ class UserRoutesTest < MiniTest::Test
   end
 
   def test_user_create
-    request_body = {email: 'a@a.a', password: 'test'}
+    request_body = {email: 'a+create@a.a', password: 'test'}
     post '/users', request_body.to_json
 
     assert_equal 201, last_response.status
@@ -24,7 +24,7 @@ class UserRoutesTest < MiniTest::Test
   end
 
   def test_user_get
-    create_response_body = _create_user email: 'a@a.a', password: 'test'
+    create_response_body = _create_user email: 'a+get@a.a', password: 'test'
 
     get "/user/#{create_response_body['id']}"
 
@@ -35,22 +35,53 @@ class UserRoutesTest < MiniTest::Test
   end
 
   def test_user_delete
-    create_response_body = _create_user email: 'a@a.a', password: 'test'
+    create_response_body = _create_user email: 'a+delete@a.a', password: 'test'
 
     delete "/user/#{create_response_body['id']}"
 
-    assert last_response.ok?
+    assert 200, last_response.status
   end
 
   def test_user_put
-    create_response_body = _create_user email: 'a@a.a', password: 'test2'
+    create_response_body = _create_user email: 'a+put@a.a', password: 'test2'
 
     put_request_body = {email: 'b@b.b'}
     put "/user/#{create_response_body['id']}", put_request_body.to_json
 
-    assert_equal last_response.status, 200
+    assert_equal 200, last_response.status
 
     put_response_body = JSON.parse last_response.body
     assert_equal put_request_body[:email], put_response_body['email']
+  end
+
+  def test_user_login
+    create_response_body = _create_user email: 'a+login@a.a', password: 'test'
+
+    login_request_body = {email: 'a+login@a.a', password: 'test'}
+    post "/login", login_request_body
+
+    assert_equal 200, last_response.status
+
+    assert_equal({'authenticated': true}.to_json, last_response.body)
+  end
+
+  def test_user_invalid_login_email
+    login_request_body = {email: 'a+invalid-login@a.a', password: 'test'}
+    post "/login", login_request_body
+
+    assert_equal 401, last_response.status
+
+    assert_equal({'authenticated': false, 'reason': 'Invalid email'}.to_json, last_response.body)
+  end
+
+  def test_user_invalid_login_password
+    create_response_body = _create_user email: 'a+login-invalid-password@a.a', password: 'test'
+
+    login_request_body = {email: 'a+login-invalid-password@a.a', password: 'test2'}
+    post "/login", login_request_body
+
+    assert_equal 401, last_response.status
+
+    assert_equal({'authenticated': false, 'reason': 'Invalid password'}.to_json, last_response.body)
   end
 end
