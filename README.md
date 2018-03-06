@@ -12,6 +12,8 @@ SQL ORM | [ActiveRecord](www.rubydoc.info/gems/activerecord)
 Logging | stdlib
 Test Framework | [Minitest](http://docs.seattlerb.org/minitest/)
 Test Coverage | [Simplecov](https://github.com/colszowka/simplecov)
+Password encryption | [bcrypt-ruby](https://github.com/codahale/bcrypt-ruby)
+User authentication | [Warden](https://github.com/hassox/warden)
 
 ## Features Implemented
 
@@ -28,7 +30,7 @@ Test Coverage | [Simplecov](https://github.com/colszowka/simplecov)
 - [x] Routes protected by cookie session
 - [x] Entities linked to logged in user
 - [ ] Routes protected via HTTP authentication
-- [ ] ~~Linting~~
+- [ ] [Linting](https://github.com/bbatsov/rubocop)
 - [ ] Logging to file
 - [ ] Logging to Telegraf
 - [ ] Routes protected via ACLs
