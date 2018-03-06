@@ -26,7 +26,12 @@ Test Coverage | [Simplecov](https://github.com/colszowka/simplecov)
 - [x] CRUD routes for user management
 - [x] Password encryption using bcrypt
 - [x] Routes protected by cookie session
+- [x] Entities linked to logged in user
 - [ ] Routes protected via HTTP authentication
+- [ ] ~~Linting~~
+- [ ] Logging to file
+- [ ] Logging to Telegraf
 - [ ] Routes protected via ACLs
+- [ ] Migrations
 - [ ] [Start GraphQL endpoint](https://medium.com/@awin/graphql-server-with-sinatra-ruby-part-1-fdd664170715)
 - [x] Validates environment (env vars, database host and port are accessible)

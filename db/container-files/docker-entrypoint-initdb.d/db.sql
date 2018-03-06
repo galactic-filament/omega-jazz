@@ -4,6 +4,12 @@ CREATE TABLE Posts (
 );
 CREATE TABLE Users (
     id SERIAL PRIMARY KEY,
-    email VARCHAR(255),
+    email VARCHAR(255) UNIQUE,
     hashed_password VARCHAR(255)
+);
+CREATE TABLE Comments (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES Users (id),
+    post_id INTEGER REFERENCES Posts (id),
+    body VARCHAR(32)
 )

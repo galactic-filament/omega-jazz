@@ -5,6 +5,7 @@ require File.expand_path '../base', __FILE__
 require File.expand_path '../default_routes', __FILE__
 require File.expand_path '../posts_routes', __FILE__
 require File.expand_path '../users_routes', __FILE__
+require File.expand_path '../comments_routes', __FILE__
 require File.expand_path '../models/user', __FILE__
 
 db_host = ENV['DATABASE_HOST']
@@ -47,4 +48,5 @@ class Server < Base
   use DefaultRoutes
   use PostsRoutes
   use UsersRoutes
+  use CommentsRoutes
 end

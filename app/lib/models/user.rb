@@ -4,6 +4,8 @@ require 'bcrypt'
 class User < ActiveRecord::Base
   include BCrypt
 
+  has_many :comments
+
   validates :email, presence: true
   validates :hashed_password, presence: true
 
