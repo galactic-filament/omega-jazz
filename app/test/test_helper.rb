@@ -36,5 +36,11 @@ module TestHelper
       assert response_body['id'].is_a? Numeric
       response_body
     end
+
+    def _create_comment(post, body)
+      response_body = _test_post_json "/post/#{post['id']}/comments", body, 201
+      assert response_body['id'].is_a? Numeric
+      response_body
+    end
   end
 end
