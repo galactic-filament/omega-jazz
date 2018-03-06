@@ -30,6 +30,7 @@ User authentication | [Warden](https://github.com/hassox/warden)
 - [x] Routes protected by cookie session
 - [x] Entities linked to logged in user
 - [ ] Routes protected via HTTP authentication
+- [ ] Routes protected via API key
 - [ ] [Linting](https://github.com/bbatsov/rubocop)
 - [ ] Logging to file
 - [ ] Logging to Telegraf
