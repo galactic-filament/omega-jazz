@@ -14,6 +14,7 @@ Test Framework | [Minitest](http://docs.seattlerb.org/minitest/)
 Test Coverage | [Simplecov](https://github.com/colszowka/simplecov)
 Password encryption | [bcrypt-ruby](https://github.com/codahale/bcrypt-ruby)
 User authentication | [Warden](https://github.com/hassox/warden)
+Linting | NYI
 
 ## Features Implemented
 
@@ -33,7 +34,7 @@ User authentication | [Warden](https://github.com/hassox/warden)
 - [ ] Routes protected via API key
 - [ ] [Linting](https://github.com/bbatsov/rubocop)
 - [ ] Logging to file
-- [ ] Logging to Telegraf
+- [ ] Logging to Logstash
 - [ ] Routes protected via ACLs
 - [ ] Migrations
 - [ ] [GraphQL endpoint](https://medium.com/@awin/graphql-server-with-sinatra-ruby-part-1-fdd664170715)
